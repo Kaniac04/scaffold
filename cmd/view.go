@@ -2,11 +2,11 @@ package cmd
 
 import (
 	"flag"
+	"fmt"
 	"os"
 
 	"github.com/Kaniac04/scaffold/internal"
 	"github.com/Kaniac04/scaffold/templates"
-	"github.com/fatih/color"
 )
 
 func ViewStruct(TypeFlag []string) {
@@ -18,16 +18,16 @@ func ViewStruct(TypeFlag []string) {
 		os.Exit(1)
 	} else {
 		if *ProjType == "all" {
-			color.New(color.FgCyan).Fprintf(os.Stdout, "Available Project Templates : ")
-			color.New(color.Reset).Fprintf(os.Stdout, "\n\n")
+			fmt.Printf("Available Project Templates : \n\n")
+
 			for key, value := range templates.ProjectTemplates {
-				color.New(color.FgCyan).Fprintf(os.Stdout, "Project Type : %s\n", key)
-				color.New(color.Reset).Fprintf(os.Stdout, "%s\n\n", value)
+				fmt.Printf("Project Type : %s\n%s\n\n", key, value)
+
 			}
 			os.Exit(0)
 		} else {
-			color.New(color.FgCyan).Fprintf(os.Stdout, "Project Type : %s\n", *ProjType)
-			color.New(color.Reset).Fprintf(os.Stdout, "%s%s", templates.ProjectTemplates[*ProjType], "\n")
+			fmt.Printf("Project Type : %s\n%s%s", *ProjType, templates.ProjectTemplates[*ProjType], "\n")
+
 			os.Exit(0)
 		}
 	}
