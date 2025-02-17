@@ -8,10 +8,12 @@ import (
 
 func ListTemp() {
 
-	fmt.Printf("Available Projects : \n\n")
+	fmt.Printf(`Available Projects : 
+	`)
 
 	for ProjName := range templates.AvailableProjects {
-		fmt.Printf("%s\n", ProjName)
+		fmt.Printf(`%s
+		`, ProjName)
 
 	}
 }

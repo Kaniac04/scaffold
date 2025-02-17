@@ -7,6 +7,6 @@ import (
 )
 
 func DisplayVer() {
-	fmt.Printf("Current Scaffold Version : %s\n", internal.Version)
+	fmt.Printf("Current Scaffold Version : %s", internal.Version)
 
 }

@@ -14,7 +14,10 @@ func Climb(ProjName string, FlagVal []string, CurrentWD string) {
 	ProjType := flag.String("type", "", "project type")
 	flag.CommandLine.Parse(FlagVal)
 
-	fmt.Printf("Parsed Arguments...\n\t\tProject Name : %s\n\t\tProject Type : %s\n", ProjName, *ProjType)
+	fmt.Printf(`Parsed Arguments...
+	Project Name : %s
+	Project Type : %s
+	`, ProjName, *ProjType)
 
 	if _, exists := templates.AvailableProjects[*ProjType]; !exists {
 		internal.PrintInvalidType(*ProjType)
@@ -25,12 +28,11 @@ func Climb(ProjName string, FlagVal []string, CurrentWD string) {
 
 	for _, direc_name := range ChosenDirectory {
 		if err := os.MkdirAll(path.Join(CurrentWD, ProjName, direc_name), os.ModePerm); err != nil {
-			fmt.Printf("[ERROR] Error in creating directory : %s\n", direc_name)
-
+			fmt.Printf("[ERROR] Error in creating directory : %s", direc_name)
 			os.Exit(1)
 		}
 	}
 
-	fmt.Printf("Scaffold Construction Complete!\n")
+	fmt.Printf("Scaffold Construction Complete!")
 
 }
