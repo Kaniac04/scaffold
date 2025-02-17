@@ -2,7 +2,6 @@ package main
 
 import (
 	"os"
-	"syscall"
 
 	"github.com/Kaniac04/scaffold/cmd"
 	"github.com/Kaniac04/scaffold/internal"
