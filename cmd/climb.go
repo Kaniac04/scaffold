@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 	"path"
-	"scaffold/internal"
-	"scaffold/templates"
+	"github.com/Kaniac04/scaffold/internal"
+	"github.com/Kaniac04/scaffold/templates"
 )
 
 func Climb(ProjName string, FlagVal []string, CurrentWD string) {

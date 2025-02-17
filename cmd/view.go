@@ -4,8 +4,9 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"scaffold/internal"
-	"scaffold/templates"
+
+	"github.com/Kaniac04/scaffold/internal"
+	"github.com/Kaniac04/scaffold/templates"
 )
 
 func ViewStruct(TypeFlag []string) {

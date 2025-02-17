@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 	"os"
-	"scaffold/internal"
+	"github.com/Kaniac04/scaffold/internal"
 )
 
 func DisplayVer() {

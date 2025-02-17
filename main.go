@@ -2,8 +2,8 @@ package main
 
 import (
 	"os"
-	"scaffold/cmd"
-	"scaffold/internal"
+	"github.com/Kaniac04/scaffold/cmd"
+	"github.com/Kaniac04/scaffold/internal"
 )
 
 var CommandList = map[string]struct{}{
