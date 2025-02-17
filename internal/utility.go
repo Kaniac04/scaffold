@@ -1,8 +1,8 @@
 package internal
 
 import (
-	"fmt"
 	"os"
+	"github.com/fatih/color"
 )
 
 const Version = "v1.0"
@@ -17,17 +17,28 @@ const (
 )
 
 func PrintGenericError() {
-	fmt.Fprintf(os.Stderr, "%s[ERROR] Incorrect usage.%s\nYou might wanna refer help. Use : scaffold help%s\n", RedCode, YellowCode, ResetCode)
+	color.New(color.FgRed).Fprintf(os.Stderr, "[ERROR] Incorrect usage.")
+	color.New(color.FgYellow).Fprintf(os.Stderr, "\nYou might wanna refer help. Use : scaffold help")
+	color.New(color.Reset).Fprintf(os.Stderr, "\n")
 }
 
 func PrintMissingArgsError(command string) {
-	fmt.Fprintf(os.Stderr, "%s[ERROR] Incorrect usage.%s\nMissing arguments for command : %s.\nRefer help : scaffold help%s\n", RedCode, YellowCode, command, ResetCode)
+	color.New(color.FgRed).Fprintf(os.Stderr, "[ERROR] Incorrect usage. ")
+	color.New(color.FgYellow).Fprintf(os.Stderr, "Missing arguments for command: %s.\n", command)
+	color.New(color.FgYellow).Fprintf(os.Stderr, "Refer help: scaffold help\n")
+	color.New(color.Reset).Fprint(os.Stdout, "\n")
 }
 
 func PrintBadArgsError(command string) {
-	fmt.Fprintf(os.Stderr, "%s[ERROR] Incorrect usage.%s\nBlank Argument or Missing flag for command : %s.\nRefer help : scaffold help%s\n", RedCode, YellowCode, command, ResetCode)
+	color.New(color.FgRed).Fprintf(os.Stderr, "[ERROR] Incorrect usage. ")
+	color.New(color.FgYellow).Fprintf(os.Stderr, "Blank Argument or Missing flag for command: %s.\n", command)
+	color.New(color.FgYellow).Fprintf(os.Stderr, "Refer help: scaffold help\n")
+	color.New(color.Reset).Fprint(os.Stdout, "\n")
 }
 
 func PrintInvalidType(ProjType string) {
-	fmt.Fprintf(os.Stderr, "%s[ERROR] Invalid Project Type.\nProject Type [%s] does not exists%s.\nRefer project list : scaffold list%s\n", RedCode, ProjType, YellowCode, ResetCode)
+	color.New(color.FgRed).Fprintf(os.Stderr, "[ERROR] Invalid Project Type.\n")
+	color.New(color.FgYellow).Fprintf(os.Stderr, "Project Type [%s] does not exist.\n", ProjType)
+	color.New(color.FgYellow).Fprintf(os.Stderr, "Refer project list: scaffold list\n")
+	color.New(color.Reset).Fprint(os.Stdout, "\n")
 }

@@ -1,16 +1,18 @@
 package cmd
 
 import (
-	"fmt"
 	"os"
-	"github.com/Kaniac04/scaffold/internal"
+
 	"github.com/Kaniac04/scaffold/templates"
+	"github.com/fatih/color"
 )
 
 func ListTemp() {
 
-	fmt.Fprintf(os.Stdout, "%sAvailable Projects : \n\n%s", internal.BlueCode, internal.ResetCode)
+	color.New(color.FgBlue).Fprintf(os.Stdout, "Available Projects : \n\n")
+	color.New(color.Reset).Fprintf(os.Stdout, "")
 	for ProjName := range templates.AvailableProjects {
-		fmt.Fprintf(os.Stdout, "%s%s%s", internal.BlueCode, ProjName, internal.ResetCode)
+		color.New(color.FgBlue).Fprintf(os.Stdout, "%s", ProjName)
+		color.New(color.Reset).Fprintf(os.Stdout, "")
 	}
 }

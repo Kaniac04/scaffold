@@ -1,11 +1,13 @@
 package cmd
 
 import (
-	"fmt"
 	"os"
+
 	"github.com/Kaniac04/scaffold/internal"
+	"github.com/fatih/color"
 )
 
 func DisplayVer() {
-	fmt.Fprintf(os.Stdout, "%sCurrent Scaffold Version : %s%s\n", internal.BlueCode, internal.Version, internal.ResetCode)
+	color.New(color.FgBlue).Fprintf(os.Stdout, "Current Scaffold Version : %s", internal.Version)
+	color.New(color.Reset).Fprintf(os.Stdout, "%s\n", "")
 }
