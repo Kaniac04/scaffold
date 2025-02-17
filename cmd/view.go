@@ -18,20 +18,14 @@ func ViewStruct(TypeFlag []string) {
 		os.Exit(1)
 	} else {
 		if *ProjType == "all" {
-			fmt.Printf(`Available Project Templates :
-			`)
+			fmt.Fprintf(os.Stdout, "Available Project Templates :\n\n")
 
 			for key, value := range templates.ProjectTemplates {
-				fmt.Printf(`Project Type : %s
-				%s
-				`, key, value)
-
+				fmt.Fprintf(os.Stdout, "Project Type : %s\n%s\n", key, value)
 			}
 			os.Exit(0)
 		} else {
-			fmt.Printf(`Project Type : %s
-			%s
-			`, *ProjType, templates.ProjectTemplates[*ProjType])
+			fmt.Fprintf(os.Stdout, "Project Type : %s\n%s\n", *ProjType, templates.ProjectTemplates[*ProjType])
 
 			os.Exit(0)
 		}

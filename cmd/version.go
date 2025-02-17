@@ -2,11 +2,12 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/Kaniac04/scaffold/internal"
 )
 
 func DisplayVer() {
-	fmt.Printf("Current Scaffold Version : %s", internal.Version)
+	fmt.Fprintf(os.Stdout, "Current Scaffold Version : %s", internal.Version)
 
 }
