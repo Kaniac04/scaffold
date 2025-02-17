@@ -2,6 +2,8 @@ package main
 
 import (
 	"os"
+	"syscall"
+
 	"github.com/Kaniac04/scaffold/cmd"
 	"github.com/Kaniac04/scaffold/internal"
 )
@@ -14,7 +16,18 @@ var CommandList = map[string]struct{}{
 	"view":    {},
 }
 
+func enableAnsiEscapeCodes() {
+	kernel32 := syscall.NewLazyDLL("kernel32.dll")
+	proc := kernel32.NewProc("SetConsoleMode")
+
+	hConsole := syscall.Handle(os.Stdout.Fd())
+	const ENABLE_VIRTUAL_TERMINAL_PROCESSING = 0x0004
+	proc.Call(uintptr(hConsole), ENABLE_VIRTUAL_TERMINAL_PROCESSING)
+}
+
 func main() {
+
+	enableAnsiEscapeCodes()
 
 	if _, exists := CommandList[os.Args[1]]; !exists {
 		internal.PrintGenericError()
