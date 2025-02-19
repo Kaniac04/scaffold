@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"path/filepath"
 
 	"github.com/Kaniac04/scaffold/internal"
 	"github.com/Kaniac04/scaffold/templates"
@@ -23,10 +24,29 @@ func Climb(ProjName string, FlagVal []string, CurrentWD string) {
 
 	ChosenDirectory := templates.ProjectDirectories[*ProjType]
 
-	for _, direc_name := range ChosenDirectory {
-		if err := os.MkdirAll(path.Join(CurrentWD, ProjName, direc_name), os.ModePerm); err != nil {
-			fmt.Fprintf(os.Stderr, "[ERROR] Error in creating directory : %s", direc_name)
-			os.Exit(1)
+	for _, direc_path := range ChosenDirectory {
+		path := path.Join(CurrentWD, ProjName, direc_path)
+		if filepath.Ext(path) == "" {
+			err := os.MkdirAll(path, os.ModePerm)
+			if err != nil {
+				fmt.Printf("Error creating directory %s: %v\n", path, err)
+				os.Exit(1)
+			}
+		} else {
+			dir := filepath.Dir(path)
+			err := os.MkdirAll(dir, os.ModePerm)
+			if err != nil {
+				fmt.Printf("Error creating directory %s: %v\n", dir, err)
+				os.Exit(1)
+			}
+
+			f, err := os.Create(path)
+			if err != nil {
+				fmt.Printf("Error creating file %s: %v\n", path, err)
+				os.Exit(1)
+			} else {
+				f.Close()
+			}
 		}
 	}
 
