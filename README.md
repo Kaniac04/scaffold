@@ -13,7 +13,7 @@ A lightweight and efficient CLI tool to generate organized directory structures 
 ## Installation
 
 ```bash
-go install github.com/Kaniac04/Scaffold@latest
+go install github.com/Kaniac04/scaffold@latest
 ```
 
 ## Usage
