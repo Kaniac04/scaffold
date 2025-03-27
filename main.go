@@ -17,6 +17,11 @@ var CommandList = map[string]struct{}{
 
 func main() {
 
+	if len(os.Args) < 2 {
+		internal.PrintGenericError()
+		os.Exit(1)
+	}
+
 	if _, exists := CommandList[os.Args[1]]; !exists {
 		internal.PrintGenericError()
 		os.Exit(1)
